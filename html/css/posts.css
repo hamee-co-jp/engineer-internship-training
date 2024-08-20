@@ -1,10 +1,47 @@
 /* 追加するCSS */
+.header {
+    background-color: black;
+    color: white;
+    padding: 4px;
+}
 
+body {
+    background-color: beige;
+}
 
+.content {
+    padding-left: 40px;
+    padding-right: 40px;
+}
+
+.post-form-name-input {
+    width: 400px;
+}
+
+.post-form-message {
+    margin-top: 24px;
+}
+
+.post-form-message-text {
+    width: 100%;
+}
+
+.post-form-submit-button {
+    width: 200px;
+    height: 30px;
+    border-radius: 4px;
+    color: white;
+    background-color: darkolivegreen;
+    border: none;
+}
 
 /* 投稿に関するCSS */
 .post {
     display: flex;
+    margin-bottom: 12px;
+    background-color: white;
+    border-color: brown;
+    border-style: dotted;
 }
 
 .post-icon {
@@ -32,6 +69,11 @@
     position: absolute;
     bottom: 0px;
     right: 0px;
+}
+
+.post-action-btn {
+    border-style: none;
+    background: none;
 }
 
 /* inputのデフォルトスタイルをリセット */
