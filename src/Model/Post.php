@@ -55,7 +55,7 @@ class Post
     public function fetch(): array
     {
         $pdo = $this->dbConnect();
-        $sql = "SELECT `id`, `name`, `message` 
+        $sql = "SELECT `id`, `name`, `message`, `created_at` 
             FROM posts 
             ORDER BY `id` DESC";
         $statement = $pdo->query($sql);

@@ -54,6 +54,7 @@
                             <div class="post-info" data-id="<?=$post['id']?>">
                                 <input type="text" class="post-name post-not-edit-input" value="<?= $post['name'] ?>" readonly><br>
                                 <textarea class="post-text post-not-edit-textarea" readonly><?= $post['message'] ?></textarea>
+                                <span class="post-create-at"><?= $post['created_at'] ?></span>
                                 <div class="post-action">
                                     <button type="button" class="post-action-btn edit-btn" onclick="editPost(this)">✒️編集</button>
                                     <button type="button" class="post-action-btn delete-btn" onclick="deletePost(this)">🗑削除</button>

@@ -60,6 +60,13 @@ body {
     width: 100%;
 }
 
+.post-create-at {
+    position: absolute;
+    bottom: 0px;
+    left: 0px;
+    color: gray;
+}
+
 .post-info {
     position: relative;
     width: 100%;
