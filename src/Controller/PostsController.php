@@ -74,8 +74,12 @@ class PostsController extends AppController
         $id = (int)$this->request->getData('id');
 
         $post = new Post();
-        $post->delete($id);
-        echo '削除に成功しました。';
+        $is_success = $post->delete($id);
+        if ($is_success) {
+            echo '削除に成功しました。';
+            return;
+        }
+        echo '削除に失敗しました。';
     }
 
     /**

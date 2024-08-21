@@ -39,18 +39,20 @@ class Post
      * 投稿データを削除する
      *
      * @param int $id ID
+     * @return bool
      */
-    public function delete(int $id): void
+    public function delete(int $id): bool
     {
         $pdo = $this->dbConnect();
         $query = "DELETE FROM `posts` WHERE `id` = $id";
-        $pdo->query($query);
+        $statement = $pdo->query($query);
+        return $statement->rowCount() === 1;
     }
 
     /**
      * DBにあるデータを取得する
      *
-     * @return array{name: string, message: string} 取得したデータ
+     * @return array{id: string, name: string, message: string, created_at: string} 取得したデータ
      */
     public function fetch(): array
     {
