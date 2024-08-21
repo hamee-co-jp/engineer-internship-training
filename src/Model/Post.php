@@ -30,8 +30,9 @@ class Post
      */
     public function update(int $id, string $name, string $message): void
     {
-        // 未実装
-        // 必須課題3:投稿更新機能
+        $pdo = $this->dbConnect();
+        $query = "UPDATE `posts` SET `name` = '$name', `message` = '$message' WHERE `id` = $id;";
+        $pdo->query($query);
     }
 
     /**
