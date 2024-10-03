@@ -1,3 +1,37 @@
+// Ajaxで投稿を作成する
+const createPost = () => {
+    var xhr = new XMLHttpRequest();
+    xhr.open('POST', '/Post/create');
+    xhr.setRequestHeader('content-type', 'application/x-www-form-urlencoded;charset=UTF-8');
+    // 作成後の投稿情報を取得
+    const name = document.getElementById('name').value;
+    const message = document.getElementById('message').value;
+    // AjaxでPost
+    xhr.send(`name=${name}&message=${message}`);
+
+    xhr.onreadystatechange = function() {
+        if (xhr.readyState === XMLHttpRequest.DONE && xhr.status === 200) {
+            // こちらボタンを表示する
+            document.getElementById('message_reload').style.display = 'block';
+            document.getElementById('reload_link').addEventListener('click', () => {
+                addPost(name, message);
+            }, {once: true});
+        }
+    }
+}
+
+const addPost = (name, message) => {
+    message_div = document.getElementById('message_reload');
+    message_div.style.display = 'none';
+
+    let posts = document.getElementById('posts');
+    const post = posts.firstElementChild;
+    let new_post = post.cloneNode(true);
+    new_post.getElementsByClassName('post-name').item(0).value = name;
+    new_post.getElementsByClassName('post-text').item(0).value = message;
+    posts.prepend(new_post);
+}
+
 // 投稿を編集状態にする
 const editPost = (self) => {
     const post_object = self.parentNode.parentNode;

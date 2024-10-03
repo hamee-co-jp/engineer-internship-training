@@ -44,8 +44,6 @@ class PostsController extends AppController
 
         $post = new Post();
         $post->save($name, $message);
-
-        header('Location: /');
     }
 
     /**

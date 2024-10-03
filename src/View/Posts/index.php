@@ -27,23 +27,27 @@
     <div class="content">
         <div>
             <!-- 投稿フォーム -->
-            <form method="POST" action="/Posts/create" class="post-form">
-                <div class="post-form-name">
-                    <h4>名前</h4>
-                    <input type="text" id="name" name="name" class="post-form-name-input" placeholder="あなたの名前を入力してください。" maxlength="30" required>
-                </div>
-                <div class="post-form-message">
-                    <h4>投稿文</h4>
-                    <textarea id="message" name="message" class="post-form-message-text" placeholder="投稿内容をここに入力してください。" maxlength="140" required></textarea>
-                </div>
+            <!-- 非同期にする場合はフォーム投稿しないので、formブロックを消す -->
+            <div class="post-form-name">
+                <h4>名前</h4>
+                <input type="text" id="name" name="name" class="post-form-name-input" placeholder="あなたの名前を入力してください。" maxlength="30" required>
+            </div>
+            <div class="post-form-message">
+                <h4>投稿文</h4>
+                <textarea id="message" name="message" class="post-form-message-text" placeholder="投稿内容をここに入力してください。" maxlength="140" required></textarea>
+            </div>
 
-                <div class="post-form-submit">
-                    <button type="submit" class="post-form-submit-button">投稿</button>
-                </div>
-            </form>
+            <div class="post-form-submit">
+                <button type="submit" class="post-form-submit-button" onclick="createPost(this)">投稿</button>
+            </div>
             <hr>
+            <div id="message_reload" style="display: none;">
+                <div class="post" style="justify-content: center; margin: 10px 0">
+                    <span>次の投稿があります。 <a href="#" id="reload_link">こちら</a> をクリックしてください。</span>
+                </div>
+            </div>
             <!-- 投稿一覧 -->
-            <div class="posts">
+            <div id="posts" class="posts">
                 <?php if ($this->get('posts')) : ?>
                     <?php foreach ($this->get('posts') as $post) : ?>
                         <!-- 投稿カード -->
