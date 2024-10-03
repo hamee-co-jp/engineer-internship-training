@@ -41,11 +41,6 @@
                 <button type="submit" class="post-form-submit-button" onclick="createPost(this)">投稿</button>
             </div>
             <hr>
-            <div id="message_reload" style="display: none;">
-                <div class="post" style="justify-content: center; margin: 10px 0">
-                    <span>次の投稿があります。 <a href="#" id="reload_link">こちら</a> をクリックしてください。</span>
-                </div>
-            </div>
             <!-- 投稿一覧 -->
             <div id="posts" class="posts">
                 <?php if ($this->get('posts')) : ?>

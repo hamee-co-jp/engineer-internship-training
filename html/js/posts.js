@@ -11,19 +11,13 @@ const createPost = () => {
 
     xhr.onreadystatechange = function() {
         if (xhr.readyState === XMLHttpRequest.DONE && xhr.status === 200) {
-            // こちらボタンを表示する
-            document.getElementById('message_reload').style.display = 'block';
-            document.getElementById('reload_link').addEventListener('click', () => {
-                addPost(name, message);
-            }, {once: true});
+            addPost(name, message);
         }
     }
 }
 
+// 投稿表示を追加する
 const addPost = (name, message) => {
-    message_div = document.getElementById('message_reload');
-    message_div.style.display = 'none';
-
     let posts = document.getElementById('posts');
     const post = posts.firstElementChild;
     let new_post = post.cloneNode(true);
