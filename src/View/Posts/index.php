@@ -60,6 +60,8 @@
                                 <textarea class="post-text post-not-edit-textarea" readonly><?= $post['message'] ?></textarea>
                                 <span class="post-create-at"><?= $post['created_at'] ?></span>
                                 <div class="post-action">
+                                    <button type="button" class="post-action-btn favorite-btn" onclick="addFavorite(this)">❤️いいね</button>
+                                    <span class="favorite-count"><?= $post['favorite'] ?></span>
                                     <button type="button" class="post-action-btn edit-btn" onclick="editPost(this)">✒️編集</button>
                                     <button type="button" class="post-action-btn delete-btn" onclick="deletePost(this)">🗑削除</button>
                                 </div>

@@ -50,6 +50,20 @@ class Post
     }
 
     /**
+     * 投稿データにいいねを追加する
+     *
+     * @param int $id ID
+     * @param int $count 更新するいいね数
+     * @return void
+     */
+    public function favorite(int $id, int $count) : void
+    {
+        $pdo = $this->dbConnect();
+        $query = "UPDATE `posts` SET `favorite` = $count WHERE `id` = $id;";
+        $pdo->query($query);
+    }
+
+    /**
      * DBにあるデータを取得する
      *
      * @return array{id: string, name: string, message: string, created_at: string} 取得したデータ
@@ -57,7 +71,7 @@ class Post
     public function fetch(): array
     {
         $pdo = $this->dbConnect();
-        $sql = "SELECT `id`, `name`, `message`, `created_at` 
+        $sql = "SELECT `id`, `name`, `message`, `created_at`, `favorite` 
             FROM posts 
             ORDER BY `id` DESC";
         $statement = $pdo->query($sql);

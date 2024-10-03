@@ -87,6 +87,10 @@ class PostsController extends AppController
      */
     public function favorite(): void
     {
-        // 未実装 応用課題:いいね機能
+        $id = (int)$this->request->getData('id');
+        $count = (int)$this->request->getData('favorite');
+
+        $post = new Post();
+        $post->favorite($id, $count);
     }
 }

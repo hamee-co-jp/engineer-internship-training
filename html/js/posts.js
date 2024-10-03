@@ -32,6 +32,25 @@ const addPost = (name, message) => {
     posts.prepend(new_post);
 }
 
+// いいね数を増やす
+const addFavorite = (self) => {
+    var xhr = new XMLHttpRequest();
+    xhr.open('POST', '/Post/favorite');
+    xhr.setRequestHeader('content-type', 'application/x-www-form-urlencoded;charset=UTF-8');
+    // 更新後の投稿情報を取得
+    const post_object = self.parentNode.parentNode;
+    const favorite = parseInt(post_object.querySelector('.favorite-count').textContent) + 1;
+    // AjaxでPost
+    xhr.send(`id=${post_object.dataset.id}&favorite=${favorite}`);
+
+    // 最新のいいね数を表示
+    xhr.onreadystatechange = function() {
+        if (xhr.readyState === XMLHttpRequest.DONE && xhr.status === 200) {
+            post_object.querySelector('.favorite-count').textContent = favorite;
+        }
+    }
+}
+
 // 投稿を編集状態にする
 const editPost = (self) => {
     const post_object = self.parentNode.parentNode;
