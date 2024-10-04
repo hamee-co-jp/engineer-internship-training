@@ -18,6 +18,8 @@ class AppController
      */
     public function __construct()
     {
+        session_start();
+
         $this->request = new ServerRequest();
         $this->templateEngine = TemplateEngine::factory();
     }

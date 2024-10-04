@@ -13,7 +13,10 @@ class LoginController extends AppController
      */
     public function index(): void
     {
-        // 未実装 応用課題:ログイン機能
+        $pageName = 'HOME / N（ベータバージョン）';
+        $this->assign('pageName', $pageName);
+
+        $this->show('Login/index.php');
     }
 
     /**
@@ -23,7 +26,11 @@ class LoginController extends AppController
      */
     public function sign_in(): void
     {
-        // 未実装 応用課題:ログイン機能
+        $name = $this->request->getData('name');
+
+        $_SESSION['name'] = $name;
+
+        header('Location: /');
     }
 
     /**
@@ -33,6 +40,9 @@ class LoginController extends AppController
      */
     public function sign_out(): void
     {
-        // 実装検討中
+        // setcookie(session_name(), '', time()-1, '/');
+        session_destroy();
+
+        header('Location: /Login/index');
     }
 }

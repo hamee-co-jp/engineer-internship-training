@@ -20,16 +20,31 @@ class PostsController extends AppController
      */
     public function index(): void
     {
+        if (!$this->isSignIned()) {
+            header('Location: /Login/index');
+        }
+
         $pageName = 'HOME / N（ベータバージョン）';
         $this->assign('pageName', $pageName);
 
         $post = new Post();
         $posts = $post->fetch();
         $this->assign('posts', $posts);
+        $this->assign('name', $_SESSION['name']);
 
         $this->show('Posts/index.php');
 
         return;
+    }
+
+    /**
+     * ログインしているかどうかを返す
+     *
+     * @return boolean
+     */
+    private function isSignIned(): bool
+    {
+        return isset($_SESSION['name']);
     }
 
     /**

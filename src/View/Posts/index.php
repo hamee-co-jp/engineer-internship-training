@@ -20,6 +20,9 @@
 <body>
     <div class="header">
         <span><?= $this->get('pageName') ?></span>
+        <div class="pull-right">
+            <button class="btn btn-secondary" onclick="location.href='/Login/sign_out'">ログアウト</button>
+        </div>
     </div>
 
     <br>
@@ -30,7 +33,7 @@
             <!-- 非同期にする場合はフォーム投稿しないので、formブロックを消す -->
             <div class="post-form-name">
                 <h4>名前</h4>
-                <input type="text" id="name" name="name" class="post-form-name-input" placeholder="あなたの名前を入力してください。" maxlength="30" required>
+                <input type="text" id="name" name="name" class="post-form-name-input" value="<?= $this->get('name') ?>" maxlength="30" required>
             </div>
             <div class="post-form-message">
                 <h4>投稿文</h4>
