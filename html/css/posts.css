@@ -95,6 +95,10 @@ body {
     appearance: none;
 }
 
+.pull-right {
+    text-align: right;
+}
+
 /* textareaのデフォルトスタイルをリセット */
 .post-not-edit-textarea {
     -webkit-appearance: none;
